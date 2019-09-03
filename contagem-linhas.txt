@@ -1,0 +1,12 @@
+A execução do comando cloc na pasta model antes da aplicação da Lombok nas classes do projeto, resultou em:
+- 79 arquivos,
+- 799 blank (linhas vazias),
+- 0 comentários,
+- 7103 code (código)
+
+Após a aplicação da biblioteca Lombok em 11 classes do projeto, a execeução do comando cloc em Model resultaou em:
+- 79 arquivos,
+- 775 blank (linhas vazias),
+- 0 comentários,
+- 6721 code (código)
+

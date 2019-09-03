@@ -3,9 +3,11 @@
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString(onlyExplicitlyIncluded = true)
 public class Activity implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -15,6 +17,7 @@ public class Activity implements Serializable {
 	private ActivityGroup group;
 	private ActivityUnit unit;
 	private Department department;
+	@ToString.Include
 	private String description;
 	private double score;
 	private double maximumInSemester;
@@ -30,10 +33,6 @@ public class Activity implements Serializable {
 		this.setScore(0);
 		this.setMaximumInSemester(0);
 		this.setActive(true);
-	}
-
-	public String toString(){
-		return this.getDescription();
 	}
 
 	@Override

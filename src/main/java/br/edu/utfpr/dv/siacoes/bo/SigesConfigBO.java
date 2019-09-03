@@ -4,7 +4,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.edu.utfpr.dv.siacoes.dao.SigesConfigDAO;
+import br.edu.utfpr.dv.siacoes.dao.ISigConfig;
+import br.edu.utfpr.dv.siacoes.dao.SigFactory;
 import br.edu.utfpr.dv.siacoes.model.SigesConfig;
 import br.edu.utfpr.dv.siacoes.model.SigetConfig.SupervisorFilter;
 
@@ -12,9 +13,9 @@ public class SigesConfigBO {
 
 	public SigesConfig findByDepartment(int idDepartment) throws Exception{
 		try{
-			SigesConfigDAO dao = new SigesConfigDAO();
+			ISigConfig dao = SigFactory.getSigConfig(SigFactory.SIGES);
 			
-			SigesConfig config = dao.findByDepartment(idDepartment);
+			SigesConfig config = (SigesConfig) dao.findByDepartment(idDepartment);
 			
 			if(config == null){
 				config = new SigesConfig();
@@ -50,7 +51,7 @@ public class SigesConfigBO {
 		}
 		
 		try{
-			SigesConfigDAO dao = new SigesConfigDAO();
+			ISigConfig dao = SigFactory.getSigConfig(SigFactory.SIGAC);
 			
 			return dao.save(idUser, config);
 		}catch(SQLException e){

@@ -4,16 +4,17 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.edu.utfpr.dv.siacoes.dao.SigacConfigDAO;
+import br.edu.utfpr.dv.siacoes.dao.ISigConfig;
+import br.edu.utfpr.dv.siacoes.dao.SigFactory;
 import br.edu.utfpr.dv.siacoes.model.SigacConfig;
 
 public class SigacConfigBO {
 	
 	public SigacConfig findByDepartment(int idDepartment) throws Exception{
 		try{
-			SigacConfigDAO dao = new SigacConfigDAO();
+			ISigConfig dao = SigFactory.getSigConfig(SigFactory.SIGAC);
 			
-			SigacConfig config = dao.findByDepartment(idDepartment);
+			SigacConfig config = (SigacConfig) dao.findByDepartment(idDepartment);
 			
 			if(config == null){
 				config = new SigacConfig();
@@ -40,7 +41,7 @@ public class SigacConfigBO {
 		}
 		
 		try{
-			SigacConfigDAO dao = new SigacConfigDAO();
+			ISigConfig dao = SigFactory.getSigConfig(SigFactory.SIGAC);
 			
 			return dao.save(idUser, config);
 		}catch(SQLException e){

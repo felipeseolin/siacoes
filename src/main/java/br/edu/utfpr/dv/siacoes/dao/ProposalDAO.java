@@ -267,7 +267,10 @@ public class ProposalDAO {
 				project = pdao.findCurrentProject(idStudent, idDepartment, semester, year);
 				
 				if(project == null) {
-					project = pdao.findApprovedProject(idStudent, idDepartment, semester, year, new SigetConfigDAO().findByDepartment(idDepartment).isRequestFinalDocumentStage1());
+					project = pdao.findApprovedProject(idStudent, idDepartment, semester, year,
+							SigFactory.getSigConfig(SigFactory.SIGAC)
+									.findByDepartment(idDepartment)
+									.isRequestFinalDocumentStage1());
 				}
 			}else{
 				project = pdao.findById(thesis.getProject().getIdProject());	
@@ -296,7 +299,9 @@ public class ProposalDAO {
 			}else{
 				return this.findById(project.getProposal().getIdProposal());
 			}
-		}finally{
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally{
 			if((rs != null) && !rs.isClosed())
 				rs.close();
 			if((stmt != null) && !stmt.isClosed())

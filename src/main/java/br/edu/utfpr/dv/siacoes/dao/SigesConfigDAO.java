@@ -9,7 +9,7 @@ import br.edu.utfpr.dv.siacoes.log.UpdateEvent;
 import br.edu.utfpr.dv.siacoes.model.SigesConfig;
 import br.edu.utfpr.dv.siacoes.model.SigetConfig.SupervisorFilter;
 
-public class SigesConfigDAO {
+public class SigesConfigDAO implements ISigConfig {
 
 	public SigesConfig findByDepartment(int idDepartment) throws SQLException{
 		Connection conn = null;
@@ -38,7 +38,12 @@ public class SigesConfigDAO {
 				conn.close();
 		}
 	}
-	
+
+	@Override
+	public int save(int idUser, Object config) throws SQLException {
+		return this.save(idUser, (SigesConfig) config);
+	}
+
 	public int save(int idUser, SigesConfig config) throws SQLException{
 		boolean insert = (this.findByDepartment(config.getDepartment().getIdDepartment()) == null);
 		Connection conn = null;

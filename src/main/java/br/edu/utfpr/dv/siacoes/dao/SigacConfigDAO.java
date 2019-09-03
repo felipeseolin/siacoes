@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import br.edu.utfpr.dv.siacoes.log.UpdateEvent;
 import br.edu.utfpr.dv.siacoes.model.SigacConfig;
 
-public class SigacConfigDAO {
+public class SigacConfigDAO implements ISigConfig {
 	
 	public SigacConfig findByDepartment(int idDepartment) throws SQLException{
 		Connection conn = null;
@@ -37,7 +37,12 @@ public class SigacConfigDAO {
 				conn.close();
 		}
 	}
-	
+
+	@Override
+	public int save(int idUser, Object config) throws SQLException {
+		return this.save(idUser, (SigacConfig) config);
+	}
+
 	public int save(int idUser, SigacConfig config) throws SQLException{
 		boolean insert = (this.findByDepartment(config.getDepartment().getIdDepartment()) == null);
 		Connection conn = null;

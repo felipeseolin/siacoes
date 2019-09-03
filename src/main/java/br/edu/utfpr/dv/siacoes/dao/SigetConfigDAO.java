@@ -10,7 +10,7 @@ import br.edu.utfpr.dv.siacoes.model.SigetConfig;
 import br.edu.utfpr.dv.siacoes.model.SigetConfig.AttendanceFrequency;
 import br.edu.utfpr.dv.siacoes.model.SigetConfig.SupervisorFilter;
 
-public class SigetConfigDAO {
+public class SigetConfigDAO implements ISigConfig {
 
 	public SigetConfig findByDepartment(int idDepartment) throws SQLException{
 		Connection conn = null;
@@ -39,7 +39,12 @@ public class SigetConfigDAO {
 				conn.close();
 		}
 	}
-	
+
+	@Override
+	public int save(int idUser, Object config) throws SQLException {
+		return this.save(idUser, (SigetConfig) config);
+	}
+
 	public int save(int idUser, SigetConfig config) throws SQLException{
 		boolean insert = (this.findByDepartment(config.getDepartment().getIdDepartment()) == null);
 		Connection conn = null;
@@ -89,7 +94,7 @@ public class SigetConfigDAO {
 				conn.close();
 		}
 	}
-	
+
 	private SigetConfig loadObject(ResultSet rs) throws SQLException{
 		SigetConfig config = new SigetConfig();
 		

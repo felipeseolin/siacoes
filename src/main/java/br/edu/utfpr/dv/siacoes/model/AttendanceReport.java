@@ -3,7 +3,10 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter @Setter
 public class AttendanceReport implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -21,36 +24,4 @@ public class AttendanceReport implements Serializable {
 		this.setSupervisor("");
 		this.setAttendances(new ArrayList<Attendance>());
 	}
-	
-	public int getStage(){
-		return stage;
-	}
-	public void setStage(int stage){
-		this.stage = stage;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getStudent() {
-		return student;
-	}
-	public void setStudent(String student) {
-		this.student = student;
-	}
-	public String getSupervisor() {
-		return supervisor;
-	}
-	public void setSupervisor(String supervisor) {
-		this.supervisor = supervisor;
-	}
-	public List<Attendance> getAttendances() {
-		return attendances;
-	}
-	public void setAttendances(List<Attendance> attendances) {
-		this.attendances = attendances;
-	}
-
 }

@@ -38,4 +38,19 @@ Java                            79            775              0           6721
 SUM:                            79            775              0           6721
 -------------------------------------------------------------------------------
 ```  
+Após a ultima atualização da lombok, foram obtidos os seguintes resultados:
+```bash
+C:\projetos-pessoais\siacoes\src\main\java\br\edu\utfpr\dv\siacoes>cloc model
+      79 text files.
+      79 unique files.
+       1 file ignored.
 
+github.com/AlDanial/cloc v 1.80  T=0.50 s (158.0 files/s, 14992.0 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Java                            79            772              0           6724
+-------------------------------------------------------------------------------
+SUM:                            79            772              0           6724
+-------------------------------------------------------------------------------
+```
